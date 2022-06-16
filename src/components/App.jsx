@@ -7,7 +7,8 @@ import Filter from './Filter/Filter';
 
 function App() {
   const [contacts, setContacts] = useState(
-    JSON.parse(window.localStorage.getItem('contacts')) ??
+    () =>
+      JSON.parse(window.localStorage.getItem('contacts')) ??
       [
         // {
         //   name: 'Anna Fesenko',
@@ -33,7 +34,10 @@ function App() {
   }, [contacts]);
 
   const saveContact = newContact => {
-    contacts.find(contact => contact.name === newContact.name)
+    contacts.find(
+      contact =>
+        contact.name === newContact.name || contact.number === newContact.number
+    )
       ? showAlert(newContact.name)
       : setContacts(prevState => [newContact, ...prevState]);
   };

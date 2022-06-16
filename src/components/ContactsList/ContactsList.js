@@ -1,5 +1,4 @@
 import s from './ContactsList.module.css';
-// import React, { Component } from 'react';
 
 import Contact from 'components/Contact/Contact';
 
